@@ -1,0 +1,29 @@
+{
+  "name": "deep-fallout",
+  "description": "Recursively applies a function callback to object properties that are objects or functions",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": {"https://github.com/theodesp/deep-fallout"},
+  "issues": "https://github.com/theodesp/deep-fallout/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Theo Despoudis",
+    "email": "thdespou@htomail.com",
+    "url": "theodespoudis.com"
+  },
+  "keywords": [
+    "deep",
+    "recursive",
+    "callback",
+    "prop",
+    "properties"
+  ],
+  "scripts": {
+    "test": "lab",
+    "test:debug": "lab --inspect"
+  },
+  "devDependencies": {
+    "code": "^4.0.0",
+    "lab": "^13.0.1"
+  }
+}
