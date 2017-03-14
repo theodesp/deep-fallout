@@ -39,7 +39,7 @@ var deepFallout = require('deep-fallout');
 
 Apply `callback` recursively on all properties of `obj`  that are functions or objects.
 
-## makeDeep(callback)
+## deepFallout.makeDeep(callback)
 
 Return a function that accepts an `obj` that partially applies `callback` recursively on all properties of `obj`  that are functions or objects.
 # tests
