@@ -5,7 +5,7 @@ const lab = exports.lab = Lab.script();
 
 const deepFallout = require('../src/index');
 
-lab.experiment('Converts simple types', () => {
+lab.experiment('Simple test cases', () => {
 
   lab.test('Converts number literals to Objects', (done) => {
 
