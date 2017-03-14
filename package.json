@@ -3,7 +3,7 @@
   "description": "Recursively applies a function callback to object properties that are objects or functions",
   "version": "1.0.0",
   "main": "src/index.js",
-  "repository": {"https://github.com/theodesp/deep-fallout"},
+  "repository": "https://github.com/theodesp/deep-fallout",
   "issues": "https://github.com/theodesp/deep-fallout/issues",
   "license": "MIT",
   "author": {

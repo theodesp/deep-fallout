@@ -5,18 +5,18 @@ const getOwnPropertyNames = Object.getOwnPropertyNames;
  * Facade call over the deepFalloutNoInvariant or deepFalloutWithInvariant methods
  * @param obj
  * @param callBack
- * @param callBackInvariant [Optional] Used to check if at each property we can or not apply the callback.
+ * @param invariant [Optional] Used to check if at each property we can or not apply the callback.
  * It needs to return true if we allow the callback to be applied or false if we not allow the callback to be applied
  * @returns {Object}
  */
-function deepFallout(obj, callBack, callBackInvariant) {
+function deepFallout(obj, callBack, invariant) {
   'use strict';
   const target = utils.asObject(obj);
 
-  if (callBackInvariant) {
-    return deepFalloutWithInvariant(target, callBack, callBackInvariant);
+  if (invariant) {
+    return deepFalloutWithInvariant(target, callBack, invariant);
   } else {
-    return deepFalloutNoInvariant(target, callBack, callBackInvariant);
+    return deepFalloutNoInvariant(target, callBack);
   }
 }
 
@@ -34,14 +34,14 @@ function deepFalloutNoInvariant(target, callBack) {
 }
 
 
-function deepFalloutWithInvariant(target, callBack, callBackInvariant) {
+function deepFalloutWithInvariant(target, callBack, invariant) {
   'use strict';
-  if (callBackInvariant(target)) {
+  if (invariant(target)) {
     target = callBack(target);
 
     getOwnPropertyNames(target).forEach(function (prop) {
       if (target.hasOwnProperty(prop) && target[prop] !== null && utils.isObj(target[prop])) {
-        deepFalloutNoInvariant(target[prop], callBack, callBackInvariant)
+        deepFalloutNoInvariant(target[prop], callBack, invariant)
       }
     });
   }
@@ -52,13 +52,13 @@ function deepFalloutWithInvariant(target, callBack, callBackInvariant) {
  * A partial application for the deepFallout.
  * Returns a function that expects an obj to be passed applying the callbacks deeply.
  * @param callBack
- * @param callBackInvariant
+ * @param invariant
  * @returns {Function}
  */
-function makeDeep(callBack, callBackInvariant) {
+function makeDeep(callBack, invariant) {
   'use strict';
   return function (obj) {
-    return deepFallout(obj, callBack, callBackInvariant);
+    return deepFallout(obj, callBack, invariant);
   }
 }
 
